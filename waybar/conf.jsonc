@@ -1,0 +1,135 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "custom/music",
+    "custom/mbackward",
+    "custom/mpause",
+    "custom/mforward"
+  ],
+  "margin": "0 12px",
+  "modules-center": ["clock", "custom/calendar"],
+  "modules-right": [
+    "custom/cpu",
+    "custom/ram",
+    "network",
+    "wireplumber",
+    "battery",
+    "tray",
+    "custom/power"
+  ],
+  "custom/mbackward": {
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "format": " ",
+    "on-click": "playerctl previous"
+  },
+  "custom/mpause": {
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "format": " ",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/mforward": {
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "format": " ",
+    "on-click": "playerctl next"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "on-click": "wofi --show drun"
+  },
+
+  "custom/cpu": {
+    "format": "  {}%",
+    "interval": 2,
+    "exec": "top -bn1 | grep '%Cpu' | awk '{print 100 - $8}'"
+  },
+  "custom/ram": {
+    "format": "  {}%",
+    "interval": 5,
+    "exec": "free | awk '/Mem/ { printf(\"%.0f\", $3/$2 * 100.0) }'"
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "sort-by-name": true,
+    "format": " {icon} ",
+    "format-icons": {
+      "default": ""
+    }
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format '{{ title }}' 2>/dev/null || echo 'Tidak ada musik'",
+    "max-length": 20
+  },
+  "clock": {
+    "timezone": "Asia/Jakarta",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "  {:%I:%M %p}"
+  },
+  "custom/calendar": {
+    "format": "{}",
+    "interval": 60,
+    "tooltip": false,
+    "exec": "echo '  '$(date +'%d %b %Y')"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-disconnected": "󰖪  Offline",
+    "tooltip-format": "{ifname} via {gwaddr}\nIP: {ipaddr}",
+    "max-length": 12
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 6
+  },
+
+  "custom/lock": {
+    "tooltip": false,
+    "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
+    "format": " "
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "~/.config/wofi/power-menu.sh",
+    "format": "⏻ "
+  }
+}

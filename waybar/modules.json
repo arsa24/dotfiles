@@ -1,0 +1,35 @@
+{
+  "clock": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#bb9af7'><b>{}</b></span>",
+        "days": "<span color='#7aa2f7'><b>{}</b></span>",
+        "weeks": "<span color='#9ece6a'><b>{}</b></span>",
+        "weekday": "<span color='#e0af68'><b>{}</b></span>",
+        "today": "<span background='#2ac3de' color='#1a1b26'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-click-up": "shift_up",
+      "on-click-down": "shift_down"
+    },
+    "format": "  {:%Y-%m-%d |   %I:%M %p}",
+    "interval": 1
+  },
+  "custom/menu": { "format": "  ", "on-click": "wofi --show drun" },
+  "custom/battery": {},
+  "custom/netwotk": {},
+  "custom/power": {
+    "format": " ",
+    "on-click": "rofi -show drun"
+  }
+}
